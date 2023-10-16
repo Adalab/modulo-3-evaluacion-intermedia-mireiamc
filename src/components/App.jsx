@@ -25,15 +25,14 @@ function App () {
     return matchesNameCountry && matchesContinent;
     })
     .map((eachCountry, i)=>{
-    return <li className='country_item' key={i}>
-    <p>{eachCountry.flag}</p>
-    <h2>{eachCountry.name.official}</h2>
-    <p>{eachCountry.capital}</p>
-    <p>{eachCountry.continents[0]}</p>
+    return <li className='country__card' key={i}>
+    <p className='country__flag'>{eachCountry.flag}</p>
+    <h2 className='country__name'>{eachCountry.name.official}</h2>
+    <p className='country__capital'>{eachCountry.capital}</p>
+    <p className='country__continent'>{eachCountry.continents[0]}</p>
     </li>
   })
   }
-  
 
   const handleNameFilter = (ev) => {
     setCountryNameFilter(ev.target.value);
@@ -46,16 +45,16 @@ function App () {
   }
 
 
-
   return (
-    <div>
-      <header>
+    <div className='app'>
+      <header className='header'>
         <h1>Country Info App</h1>
         <p>Explore information about contries and flags. Add new countries and filter throught the list!</p>
       </header>
-      <main>
+      <main className='main'>
+        <section className='filters__container'>
         <h2>Filters</h2>
-        <form>
+        <form className='filters__form'>
         <label htmlFor="country">By Country:</label>
         <input 
           type="text" 
@@ -78,7 +77,8 @@ function App () {
             <option value="South-america">South America</option>
         </select>
         </form>
-        <section>
+        </section>
+        <section className='countries__section'>
           <ul className='countries__list'>
             {renderCountriesList()}
           </ul>
